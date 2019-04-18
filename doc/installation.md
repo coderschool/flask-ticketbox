@@ -37,7 +37,6 @@ For the first time
 ```bash=
 pip install Flask
 pip install gunicorn
-pip install pandas, numpy
 pip install Flask-SQLAlchemy
 pip install Flask-Migrate
 pip install flask_login
@@ -70,4 +69,10 @@ dist/
 build/
 \*.egg-info/
 
+```
+
+### Run project
+```bash=
+flask db init
+flaks run 
 ```
