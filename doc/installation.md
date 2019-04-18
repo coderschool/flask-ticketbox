@@ -74,5 +74,5 @@ build/
 ### Run project
 ```bash=
 flask db init
-flaks run 
+flask run 
 ```
