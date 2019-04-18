@@ -25,4 +25,4 @@ class Event(db.Model):
         self.time = time
 
     def __repr__(self):
-        return f"Event name is {self.name}."
+        return f"{self.id} Event name is {self.name}."

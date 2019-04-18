@@ -5,7 +5,7 @@ from src.models.event import Event
 
 events_blueprint = Blueprint('events',
                              __name__,
-                             template_folder='../templates/events')
+                             template_folder='../../templates/events')
 
 
 @events_blueprint.route('/add', methods=['GET', 'POST'])
@@ -14,9 +14,13 @@ def add():
 
     if form.validate_on_submit():
         name = form.name.data
-
+        description = form.description.data
+        image_url = form.image_url.data
+        price = form.price.data
+        address = form.address.data
+        time = form.time.data
         # Add new Event to database
-        new_pup = Event(name)
+        new_pup = Event(name, description, image_url, price, address, time)
         db.session.add(new_pup)
         db.session.commit()
 
