@@ -74,5 +74,11 @@ build/
 ### Run project
 ```bash=
 flask db init
-flaks run 
+flask run 
+```
+
+### Database migration
+```
+flask db migrate -m "Message"
+flask db upgrade
 ```
