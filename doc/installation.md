@@ -76,3 +76,9 @@ build/
 flask db init
 flask run 
 ```
+
+### Database migration
+```
+flask db migrate -m "Message"
+flask db upgrade
+```
