@@ -14,12 +14,14 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(200))
     tokens = db.Column(db.Text)
     create_at = db.Column(db.DateTime, default=datetime.utcnow())
+    role = db.Column(db.Text)
 
-    def __init__(self, email, name="", avatar="", tokens=""):
+    def __init__(self, email, name="", avatar="", tokens="", role=""):
         self.email = email
         self.name = name
         self.avatar = avatar
         self.tokens = tokens
+        self.role = role
 
     def __repr__(self):
         return f"user id: {self.id}, user email: {self.email}"
