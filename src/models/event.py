@@ -10,9 +10,9 @@ class Event(db.Model):
     name = db.Column(db.Text(), nullable=False)
     owner_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     description = db.Column(db.Text(), nullable=False)
-    image_url: db.Column(db.Text(), nullable=False)
-    address: db.Column(db.Text(), nullable=False)
-    time: db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
+    image_url = db.Column(db.Text(), nullable=False)
+    address = db.Column(db.Text(), nullable=False)
+    time = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
     ticket_types = db.relationship('types', backref='event')
 
