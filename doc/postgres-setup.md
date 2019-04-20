@@ -18,11 +18,11 @@ export pass_of_user=your_password
 export name_of_database=your_db_name
 
 #psql
-export POSTGRES_USER=$name_of_user
-export POSTGRES_PWD=$pass_of_user
-export POSTGRES_DB=$name_of_database
-export POSTGRES_HOST=localhost
-export POSTGRES_PORT=5432
+export PSQL_USER=$name_of_user
+export PSQL_PWD=$pass_of_user
+export PSQL_DB=$name_of_database
+export PSQL_HOST=localhost
+export PSQL_PORT=5432
 ```
 ## Create database and config
 Now create a superuser for PostgreSQL
@@ -46,11 +46,11 @@ psql -U $name_of_user -d $name_of_database
 
 ```python
 POSTGRES = {
-    'user': os.environ['POSTGRES_USER'],
-    'pw': os.environ['POSTGRES_PWD'],
-    'db': os.environ['POSTGRES_DB'],
-    'host': os.environ['POSTGRES_HOST'],
-    'port': os.environ['POSTGRES_PORT'],
+    'user': os.environ['PSQL_USER'],
+    'pw': os.environ['PSQL_PWD'],
+    'db': os.environ['PSQL_DB'],
+    'host': os.environ['PSQL_HOST'],
+    'port': os.environ['PSQL_PORT'],
 }
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:\

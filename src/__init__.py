@@ -1,3 +1,4 @@
+
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -22,6 +23,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 Migrate(app, db)
+
+from src.models.type import Type
 
 from src.components.events.views import events_blueprint
 app.register_blueprint(events_blueprint, url_prefix='/events')

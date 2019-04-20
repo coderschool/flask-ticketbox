@@ -6,15 +6,15 @@ class Event(db.Model):
 
     __tablename__ = 'events'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    # owner_id = db.relationship('User',backref='event', nullable=False)
-    # owner_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    description = db.Column(db.Text, nullable=False)
-    image_url: db.Column(db.String(200), nullable=False)
-    price: db.Column(db.Integer, default=0)
-    address: db.Column(db.String(100), nullable=False)
-    time: db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.Text(), nullable=False)
+    owner_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    description = db.Column(db.Text(), nullable=False)
+    image_url: db.Column(db.Text(), nullable=False)
+    address: db.Column(db.Text(), nullable=False)
+    time: db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
+
+    ticket_types = db.relationship('types', backref='event')
 
     def __init__(self, name, description, image_url, price, address, time):
         self.name = name
