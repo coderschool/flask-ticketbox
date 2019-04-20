@@ -35,6 +35,8 @@ db = SQLAlchemy(app, metadata=metadata)
 Migrate(app, db)
 
 from src.models.type import Type
+from src.models.order import Order
+from src.models.ticket import Ticket
 
 from src.components.events.views import events_blueprint
 app.register_blueprint(events_blueprint, url_prefix='/events')
