@@ -25,6 +25,3 @@ Migrate(app, db)
 
 from src.components.events.views import events_blueprint
 app.register_blueprint(events_blueprint, url_prefix='/events')
-
-from src.components.users.views import users_blueprint
-app.register_blueprint(users_blueprint, url_prefix='/users')
