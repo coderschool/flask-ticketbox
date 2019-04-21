@@ -1,5 +1,6 @@
 from src import db
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 class Event(db.Model):
@@ -14,7 +15,7 @@ class Event(db.Model):
     address = db.Column(db.Text(), nullable=False)
     time = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
-    ticket_types = db.relationship('types', backref='event')
+    ticket_types = db.relationship('Type', backref='events')
 
     def __init__(self, name, description, image_url, price, address, time):
         self.name = name
