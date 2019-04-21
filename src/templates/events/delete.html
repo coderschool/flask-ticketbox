@@ -1,12 +1,17 @@
 {% extends "base.html" %} {% block content %}
-<div class="jumbotron">
-  <h1>Delete an event?</h1>
-  <p>Fill out the form to remove the event from the list.</p>
-  <form method="POST">
-    {# This hidden_tag is a CSRF security feature. #}
-    {{ form.hidden_tag() }}
-    {{ form.id.label }} {{ form.id() }}
-    {{ form.submit() }}
-  </form>
+<link rel="stylesheet" href="{{ url_for('static', filename='events/delete.css') }}">
+<div class="delete-container">
+    <div class="delete-bg blur"></div>
+    <div class="delete-jbt jumbotron">
+        <h1>Delete an event?</h1>
+        <p>Fill out the form to remove the event from the list.</p>
+        <form method="POST" class="delete-form">
+          {# This hidden_tag is a CSRF security feature. #}
+          {{ form.hidden_tag() }}
+          {{ form.id.label }} {{ form.id() }} <br>
+          {{ form.submit() }}
+        </form>
+      </div>
 </div>
+
 {% endblock %}

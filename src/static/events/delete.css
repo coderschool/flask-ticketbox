@@ -1,0 +1,58 @@
+.delete-bg {
+    /* The image used */
+    background-image: url("http://www.coderschool.vn/assets/campus/cafe-e9c91cddc88a8d47ad1b5c90c0e8d1736712cda55a176ff292a4ae5a886fd2b8.jpg");
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Scale 110% to get rid of white edges */
+    transform: scale(1.1);
+}
+
+.delete-jbt{
+    color: white;
+    position: absolute;
+    top: 0px;
+    right: 5%;
+    width: 35%;
+    height: 100%;
+    margin:0;
+    padding-top: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-width: 400px;
+
+    background:rgba(0,0,0,0.7);
+    border:1px solid rgba(0,0,0,0.4);
+}
+
+.blur{
+    -webkit-filter: blur(4px);
+	filter: blur(4px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+}
+
+.delete-container{
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+.delete-form input{
+    border-radius: 0.25rem;
+    border: 1px solid;
+    width: 100%;
+}
+
+.delete-form #submit{
+    margin-top:15px;
+    width: auto;
+}
+
+.delete-form label{
+    margin-top:.5rem;
+}
