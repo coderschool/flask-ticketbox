@@ -1,6 +1,9 @@
 {% extends "base.html" %} {% block content %}
-<div class="jumbotron">
-  <h1>Welcome to CoderSchool</h1>
-  <p>Please select one of the links from the nav bar.</p>
-</div>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+
+  <div class="bg"></div>
+  <div class="hero-title">
+      <h1>Welcome to <span class="cs-text">CoderSchool</span></h1>
+      <p>Please select any link on navigation bar</p>
+  </div>
 {% endblock %}

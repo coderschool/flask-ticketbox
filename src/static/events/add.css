@@ -1,0 +1,58 @@
+.add-bg {
+    /* The image used */
+    background-image: url("http://www.coderschool.vn/system/announcements/announcement_imgs/000/000/001/original/Untitled-1.jpg?1543902799");
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Scale 110% to get rid of white edges */
+    transform: scale(1.1);
+}
+
+.add-jbt{
+    color: white;
+    position: absolute;
+    top: 0px;
+    right: 5%;
+    width: 35%;
+    height: 100%;
+    margin:0;
+    padding-top: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-width: 400px;
+
+    background:rgba(0,0,0,0.7);
+    border:1px solid rgba(0,0,0,0.4);
+}
+
+.blur{
+    -webkit-filter: blur(4px);
+	filter: blur(4px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+}
+
+.add-container{
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+.add-form input{
+    border-radius: 0.25rem;
+    border: 1px solid;
+    width: 100%;
+}
+
+.add-form #submit{
+    margin-top:15px;
+    width: auto;
+}
+
+.add-form label{
+    margin-top:.5rem;
+}
