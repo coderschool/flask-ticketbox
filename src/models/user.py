@@ -1,23 +1,19 @@
-from src import db, app
+from src import db
 from datetime import datetime
 from sqlalchemy.orm import relationship, backref
 from flask_security import UserMixin, RoleMixin
 from flask_dance.consumer.backend.sqla import OAuthConsumerMixin
-from flask_login import LoginManager
 
-login_manager = LoginManager()
-login_manager.init_app(app)
+class RolesUsers(db.Model):
+    __tablename__ = 'roles_users'
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-roles_users = db.Table('roles_users',
-                    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-                    db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('role.id'))
 
 class Role(RoleMixin, db.Model):
     __tablename__ = 'role'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
@@ -39,5 +35,7 @@ class User(UserMixin, db.Model):
         return f"user id: {self.id}, user email: {self.email}"
 
 class OAuth(OAuthConsumerMixin, db.Model):
+    __tablename__ = 'oauth'
+
     user_id = db.Column(db.Integer(), db.ForeignKey(User.id))
     user = db.relationship(User)
