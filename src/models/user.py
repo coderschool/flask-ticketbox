@@ -1,8 +1,8 @@
 from src import db
-from datetime import datetime
 from sqlalchemy.orm import relationship, backref
 from flask_security import UserMixin, RoleMixin
 from flask_dance.consumer.backend.sqla import OAuthConsumerMixin
+
 
 class RolesUsers(db.Model):
     __tablename__ = 'roles_users'
@@ -11,12 +11,14 @@ class RolesUsers(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     role_id = db.Column(db.Integer(), db.ForeignKey('role.id'))
 
+
 class Role(RoleMixin, db.Model):
     __tablename__ = 'role'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
+
 
 class User(UserMixin, db.Model):
     """
@@ -33,6 +35,7 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f"user id: {self.id}, user email: {self.email}"
+
 
 class OAuth(OAuthConsumerMixin, db.Model):
     __tablename__ = 'oauth'
