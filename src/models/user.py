@@ -1,8 +1,26 @@
 from src import db
-from datetime import datetime
-from flask_login import UserMixin
+from sqlalchemy.orm import relationship, backref
+from flask_security import UserMixin, RoleMixin
+from flask_dance.consumer.backend.sqla import OAuthConsumerMixin
 
-class User(db.Model, UserMixin):
+
+class RolesUsers(db.Model):
+    __tablename__ = 'roles_users'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('role.id'))
+
+
+class Role(RoleMixin, db.Model):
+    __tablename__ = 'role'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    description = db.Column(db.String(255))
+
+
+class User(UserMixin, db.Model):
     """
         User model
     """
@@ -12,16 +30,15 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(128), nullable=False, unique=True)
     name = db.Column(db.String(128), nullable=True)
     avatar = db.Column(db.String(200))
-    tokens = db.Column(db.Text)
-    create_at = db.Column(db.DateTime, default=datetime.utcnow())
-    role = db.Column(db.Text)
-
-    def __init__(self, email, name="", avatar="", tokens="", role=""):
-        self.email = email
-        self.name = name
-        self.avatar = avatar
-        self.tokens = tokens
-        self.role = role
+    active = db.Column(db.Boolean())
+    roles = relationship('Role', secondary='roles_users', backref=backref('users', lazy='dynamic'))
 
     def __repr__(self):
         return f"user id: {self.id}, user email: {self.email}"
+
+
+class OAuth(OAuthConsumerMixin, db.Model):
+    __tablename__ = 'oauth'
+
+    user_id = db.Column(db.Integer(), db.ForeignKey(User.id))
+    user = db.relationship(User)
